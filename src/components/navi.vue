@@ -1,24 +1,24 @@
 <!--
  * @Author: xiao-jie
  * @Date: 2021-08-16 10:18:40
- * @LastEditors: xiao-jie
- * @LastEditTime: 2021-08-16 10:57:07
+ * @LastEditors: feizzer
+ * @LastEditTime: 2021-11-10 16:07:52
  * @Description: 
 -->
 <template>
-  <el-container id="main-container">
-    <el-aside id="main-aside">
+  <el-container>
+    <el-aside>
      <el-menu  @open="handleOpen" @close="handleClose" unique-opened :collapse-transition="false" :router="true" 
             :default-active="activedMenu">
         <div class="menu_box">
             <img src="../assets/logo.png" alt="" 
                 style="width:150px; height:150px; border-radius:50%;" >
         </div>
-        <el-menu-item index=''>首页</el-menu-item>
-        <el-menu-item index=''>博客</el-menu-item>
-        <el-menu-item index=''>归档</el-menu-item>
-        <el-menu-item index=''>标签</el-menu-item>
-        <el-menu-item index=''>主题</el-menu-item>
+        <el-menu-item index=''><i class="el-icon-s-home"></i>首页</el-menu-item>
+        <el-menu-item index='/articleList'><i class="el-icon-toilet-paper"></i>博客</el-menu-item>
+        <el-menu-item index=''><i class="el-icon-s-home"></i>归档</el-menu-item>
+        <el-menu-item index=''><i class="el-icon-s-home"></i>标签</el-menu-item>
+        <el-menu-item index=''><i class="el-icon-s-home"></i>主题</el-menu-item>
         
     </el-menu>
     </el-aside>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import '../../static/js/navi.js'
+
 export default {
   name: 'Home',
   data() {
@@ -90,15 +90,28 @@ export default {
 </script>
 
 <style scoped>
-  @import '../../static/style/navi.css';
-  #main-header{
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-  }
-  .el-meun{
-      background-color: "#fff";
-      border: 0px white solid;
-  }
+.el-container {
+    height: 100%;
+}
+.el-aside{
+    width: 250px!important;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    color: blue;
+    text-align: center;   
+    box-shadow:  0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.el-header{
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+}
+.el-main {
+    padding: 30px;
+    padding-left: 280px;
+
+}
 </style>
 
