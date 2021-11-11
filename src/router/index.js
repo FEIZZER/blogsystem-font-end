@@ -10,7 +10,7 @@ export default new Router({
     {path: '/', redirect: '/index'},
     {path: '/index', component: Navi, children: [
       {path: '/articleList', component: ArticleList},
-      {path: '/articleDetail',component: ArticleDetail}
+      {path: `/articleDetail/:articleID`,component: ArticleDetail}
     ]}
   ]
 })

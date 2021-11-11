@@ -2,7 +2,7 @@
  * @Author: xiao-jie
  * @Date: 2021-08-16 10:18:40
  * @LastEditors: feizzer
- * @LastEditTime: 2021-11-10 16:07:52
+ * @LastEditTime: 2021-11-10 18:09:24
  * @Description: 
 -->
 <template>
@@ -41,21 +41,23 @@ export default {
       return {
           menusList: [], 
           isCollapse: true,
-          activedMenu: '/home/users',
+          activedMenu: '/articleList',
       };
   },
   created() {
-      this.createMenuList()
-      if (sessionStorage.getItem('data')) {
-          Object.assign(this.$data, JSON.parse(sessionStorage.getItem('data')))
-          console.log('get session' + this.activedMenu)
-      }
-       window.addEventListener("beforeunload",()=>{
-            console.log('before reloaded')
-    	    sessionStorage.setItem("data",JSON.stringify(this.$data));
-    });
+      this.setPageSessionStorage()
   },
   methods:{
+      setPageSessionStorage() {
+        if (sessionStorage.getItem('naviData')) {
+            Object.assign(this.$data, JSON.parse(sessionStorage.getItem('naviData')))
+            console.log('get session' + this.activedMenu)
+        }
+        window.addEventListener("beforeunload",()=>{
+            console.log('before reloaded')
+            sessionStorage.setItem("naviData",JSON.stringify(this.$data));
+        });
+      },
       handleOpen() {
       },
       handleClose() {
@@ -64,27 +66,9 @@ export default {
           this.isCollapse = !this.isCollapse
           
       },
-      logout: function() {
-          window.sessionStorage.removeItem('token')
-          this.$router.push('/login')
-      }, 
       changeActivedMenu(menuPath){
           this.activedMenu = menuPath
       },
-      createMenuList: function() {
-          this.$http.get('/menus')
-          .then(res => {
-              let data = res.data
-              if (data.meta.status == 200) {
-                  this.menusList = data.data
-              } else {
-                  this.$message({
-                      type: 'error', 
-                      message: data.meta.msg
-                  })
-              }
-          })
-      }
   }
 }
 </script>
