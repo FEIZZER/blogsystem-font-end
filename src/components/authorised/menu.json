@@ -1,0 +1,8 @@
+
+[
+    {"name": "组件测试", "type": "submenu", "children": [
+        {"name": "highlight测试", "type": "item", "index": "/test_highlight"}
+    ]},
+    {"name":"组件封装", "type": "submenu", "children":[
+    ]}
+]
